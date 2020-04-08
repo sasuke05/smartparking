@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>IOT</title>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row" style="color:blue;">
+        <div class="col-md-12">
+            <h2>Smart Parking Reservation System</h2>
+        </div>
+    </div>
+    <hr>
+    {% if s %}
+        {% if s == "successful" %}
+            <div class="alert alert-success">
+                Your Reservation was {{s}}<br>
+            </div>
+        {% elif s == "unsuccessful" %}
+            <div class="alert alert-danger">
+                Your Reservation was {{s}}<br>
+            </div>
+        {% endif %}
+    {% endif %}
+                <br>
+
+    <div class="row">
+        <div class="col-md-7">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="hour">
+                    Hour:
+                </label>
+                <input type="number"  class="form-control" name="hour" min="1" max="12">
+                </div>
+                <div class="form-group">
+                    <label for="min">
+                        Minutes:
+                    </label>
+                    <input type="number" class="form-control" name="minutes" min="0" max="59">
+                </div>
+                <div class="form-group">
+                    <label for="slot">Slot no.</label>
+                    <input type="number" name="slot" class="form-control" min="1" max="3">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+                <!--{{ form.as_p }}-->
+            </form>
+            </div>
+        </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Availaible Slots: {{available}} / 3</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Slot 1 -------<span>{{s1}}</span></li>
+                <li class="list-group-item">Slot 2 -------<span>{{s2}}</span></li>
+                <li class="list-group-item">Slot 3 -------<span>{{s3}}</span></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
