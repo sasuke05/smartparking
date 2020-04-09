@@ -5,7 +5,7 @@ from time import strftime
 from django.http import HttpResponse
 # Create your views here.
 def home(request):
-    aio = Client('sem6', 'aio_shAc24hiyF3lkUEqzWjS7iuYZFVQ')
+    aio = Client('sem6', 'aio_tkWz44qALyafHtu6EWTLfQNgSf0y')
     slot1_available = strftime(aio.receive('entryslot1').created_at) < strftime(aio.receive('exitslot1').created_at)
     slot2_available = strftime(aio.receive('entryslot2').created_at) < strftime(aio.receive('exitslot2').created_at)
     slot3_available = strftime(aio.receive('entryslot3').created_at) < strftime(aio.receive('exitslot3').created_at)
